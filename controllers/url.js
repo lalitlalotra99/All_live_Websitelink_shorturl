@@ -6,7 +6,11 @@ export const shortUrl = async (req,res) =>{
     const longUrl = req.body.longUrl
     const shortCode = shortid.generate()
 
-    const shortUrl = `http://localhost:2000/${shortCode}`
+    // this port is not working 
+    // const shortUrl = `http://localhost:2000/${shortCode}`
+
+    //this port is work i have done some manually change you can compare both.
+    const shortUrl = `${process.env.BASE_URL}/${shortCode}`;
 
     // Save to Database
     const newUrl = new Url({shortCode,longUrl})
